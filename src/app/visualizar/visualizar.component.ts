@@ -18,10 +18,10 @@ export class VisualizarComponent {
   opcao: any;
 
   verForm = this.fb.group({
-    id: [''],
-    status: [''],
+    status: ['', {disabled: true}],
     codigo: [''],
-    descricao: ['']
+    descricao: [''],
+    opcoes: ['']
   });
 
   constructor(
@@ -46,6 +46,7 @@ export class VisualizarComponent {
     .subscribe(cadastro => {
       this.cadastro = cadastro;
       this.verForm.setValue(cadastro);
+      this.opcoes = cadastro['opcoes'];
     });
   }
 
