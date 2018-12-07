@@ -5,7 +5,19 @@
   <!-- This fills the remaining space of the current row -->
   <span class="fill-remaining-space"></span>
 
-  <span>Right Aligned Text</span>
+  <button mat-icon-button class="color: white" [matMenuTriggerFor]="menu2">
+    <mat-icon aria-label="Sistema">settings</mat-icon>
+  </button>
+  <mat-menu #menu2="matMenu">
+    <button mat-menu-item>Cadastros</button>
+  </mat-menu>
+  <button mat-icon-button class="color: white" [matMenuTriggerFor]="menu">
+    <mat-icon aria-label="Sua conta">person</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Perfil</button>
+    <button mat-menu-item>Logout</button>
+  </mat-menu>
 </mat-toolbar>
 <!-- <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand">Apollus </a>

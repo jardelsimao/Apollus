@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CadastrosComponent } from './cadastros/cadastros.component';
 import { InserirComponent } from './inserir/inserir.component';
+import { VisualizarComponent } from './visualizar/visualizar.component';
 import { EditarComponent, ModalComponent } from './editar/editar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DxDataGridModule, DxButtonModule } from 'devextreme-angular';
@@ -14,6 +15,8 @@ import {
    MatCardModule,
    MatButtonModule,
    MatDialogModule,
+   MatMenuModule,
+   MatIconModule,
   } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -24,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     InserirComponent,
     EditarComponent,
     ModalComponent,
+    VisualizarComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +40,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule,
     DxButtonModule,
+    MatMenuModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -16,6 +16,10 @@ export class CadastrosComponent {
     this.getCadastros();
   }
 
+  ver(id) {
+    this.router.navigate(['/cadastros/visualizar'], {queryParams: {id: id}});
+  }
+
   getCadastros() {
     this.service.getCadastros()
     .subscribe(cadastros => {
