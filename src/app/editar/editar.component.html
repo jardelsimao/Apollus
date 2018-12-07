@@ -107,14 +107,14 @@
                   <dx-button class="mr-2"
                     (onClick)="editarOpcoes(employee.data)"
                     [template]="'buttonTemplate'">
-                    <i *dxTemplate="let buttonData of 'buttonTemplate'" class="btn btn-info btn-sm">
+                    <i *dxTemplate="let buttonData of 'buttonTemplate'" class="btn btn-secondary btn-sm">
                         <i class="far fa-edit"></i>
                     </i>
                   </dx-button>
                   <dx-button
                     (onClick)="deletar(employee.data.id)"
                     [template]="'buttonTemplate'">
-                    <i *dxTemplate="let buttonData of 'buttonTemplate'" class="btn btn-danger btn-sm">
+                    <i *dxTemplate="let buttonData of 'buttonTemplate'" class="btn btn-secondary btn-sm">
                       <i class="far fa-trash-alt"></i>
                     </i>
                   </dx-button>

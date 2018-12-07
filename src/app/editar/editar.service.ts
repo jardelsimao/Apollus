@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class Service {
-  private url = 'http://localhost/apollus/public';
+  private url = 'http://www.syswebr.com/apollus_api/public';
 
   constructor(private http: HttpClient) {}
 
