@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CadastrosComponent } from './cadastros/cadastros.component';
 import { InserirComponent } from './inserir/inserir.component';
-import { EditarComponent } from './editar/editar.component';
+import { EditarComponent, ModalComponent } from './editar/editar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DxDataGridModule, DxButtonModule } from 'devextreme-angular';
 import {
@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CadastrosComponent,
     InserirComponent,
     EditarComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,5 +39,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents: [ModalComponent]
 })
 export class AppModule { }

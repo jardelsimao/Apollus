@@ -2,6 +2,12 @@ import { Component, Inject } from '@angular/core';
 import { Service } from './editar.service';
 import { FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-editar',
@@ -32,9 +38,10 @@ export class EditarComponent {
   });
 
   constructor(
-    private service: Service,
+     private service: Service,
      private fb: FormBuilder,
      protected router: Router,
+     public dialog: MatDialog,
      protected activeroute: ActivatedRoute) {
 
       this.activeroute
@@ -99,7 +106,53 @@ export class EditarComponent {
 
   }
 
-  editarOpcoes(id) {
+  editarOpcoes(data) {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      data: data,
+      panelClass: 'apollus-no-padding-dialog',
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      this.getOpcoes(data['cadastro_id']);
+      console.log(data['cadastro_id']);
+    });
   }
+}
+
+@Component({
+  selector: 'app-modal',
+  templateUrl: 'modal.html',
+  providers: [Service],
+})
+
+export class ModalComponent {
+
+  editarModalForm = this.fb.group({
+    id: [''],
+    cadastro_id: [''],
+    status: [''],
+    codigo: [''],
+    descricao: ['']
+  });
+
+  constructor(
+    public dialogRef: MatDialogRef<ModalComponent>,
+    private fb: FormBuilder,
+    private service: Service,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+      this.editarModalForm.setValue(data);
+    }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  onSubmit() {
+    this.service.editarOpcoes(this.editarModalForm.value)
+    .subscribe(dt => {
+      this.dialogRef.close();
+    });
+  }
+
+
 }

@@ -23,6 +23,12 @@ export class Service {
     return this.http.put<any>(url, data);
   }
 
+  editarOpcoes(data: any): Observable<any> {
+    const id = data['id'];
+    const url = `${this.url}/opcoes/editar/${id}`;
+    return this.http.put<any>(url, data);
+  }
+
   getOpcoes(id): Observable<any> {
     return this.http.get(`${this.url}/opcoes_lista/${id}`);
   }
