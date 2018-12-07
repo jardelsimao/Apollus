@@ -1,0 +1,80 @@
+<div class="col-md-12 col-lg-8">
+  <div class="card mt-3">
+    <div class="card-header">
+      Listar
+      <button (click)="getCadastros()" type="button" class="btn btn-secondary btn-sm float-right">
+        <i class="fas fa-sync-alt"></i>
+        Atualizar
+      </button>
+      <button (click)="adicionar()" type="button" class="btn btn-secondary mr-2 btn-sm float-right">
+        <i class="fas fa-plus"></i>
+        Adicionar
+      </button>
+    </div>
+    <div class="card-body">
+      <dx-data-grid
+        id="gridContainer"
+        [dataSource]="cadastros"
+        [allowColumnReordering]="true"
+        [allowColumnResizing]="true"
+        [columnAutoWidth]="true"
+        rowTemplate="rowTemplateName"
+        [showBorders]="true">
+        <dxo-filter-row
+        [visible]="true"
+        ></dxo-filter-row>
+        <dxo-header-filter
+        [visible]="true"></dxo-header-filter>
+        <dxo-export [enabled]="true" fileName="cadastros"></dxo-export>
+        <dxo-search-panel
+            [visible]="true"
+            [width]="180"
+            placeholder="Pesquisar..."></dxo-search-panel>
+        <dxo-pager
+            [allowedPageSizes]="[5, 8, 15, 30]"
+            [showInfo]="false"
+            [showNavigationButtons]="true"
+            [showPageSizeSelector]="true"
+            [visible]="true">
+        </dxo-pager>
+
+        <dxo-paging [pageSize]="8"></dxo-paging>
+        <dxi-column dataField="status" caption="Status"></dxi-column>
+        <dxi-column dataField="codigo" caption="Código"></dxi-column>
+        <dxi-column dataField="descricao" caption="Descrição"></dxi-column>
+        <dxi-column caption="Ações"></dxi-column>
+        <tbody class="dx-row" *dxTemplate="let employee of 'rowTemplateName'" >
+          <tr class="main-row">
+            <td class="text-center">
+              <div *ngIf="employee.data.status == 1">
+                <i style="color: green" class="fas fa-circle"></i>
+              </div>
+              <div *ngIf="employee.data.status == 2">
+                  <i  style="color: red" class="fas fa-circle"></i>
+              </div>
+            </td>
+            <td>{{employee.data.codigo}}</td>
+            <td>{{employee.data.descricao}}</td>
+            <td>
+              <dx-button class="mr-2"
+                (onClick)="editar(employee.data.id)"
+                [template]="'buttonTemplate'">
+                <i *dxTemplate="let buttonData of 'buttonTemplate'" class="btn btn-info btn-sm">
+                    <i class="far fa-edit"></i>
+                </i>
+              </dx-button>
+              <dx-button
+                (onClick)="deletar(employee.data.id)"
+                [template]="'buttonTemplate'">
+                <i *dxTemplate="let buttonData of 'buttonTemplate'" class="btn btn-danger btn-sm">
+                  <i class="far fa-trash-alt"></i>
+                </i>
+              </dx-button>
+            </td>
+          </tr>
+        </tbody>
+      </dx-data-grid>
+    </div>
+  </div>
+</div>
+

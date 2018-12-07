@@ -1,0 +1,55 @@
+<div class="card">
+  <div class="card-header">
+    Adicionar registro
+  </div>
+  <div class="card-body">
+    <div class="col-md-12">
+      <form class="form-group" [formGroup]="adicionarForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="form-group col-md-2">
+            <label>Status</label>
+            <input type="text" class="form-control" formControlName="status" required>
+          </div>
+          <div class="form-group col-md-3">
+            <label>Código</label>
+            <input type="text" class="form-control" formControlName="codigo" required>
+          </div>
+          <div class="form-group col-md-5">
+            <label>Descrição</label>
+            <input type="text" class="form-control" formControlName="descricao" required>
+          </div>
+          <div class="form-group col-md-2">
+              <label></label>
+              <button [disabled]="!adicionarForm.valid" class="btn btn-primary form-control" style="margin-top:32px">Salvar</button>
+          </div>
+        </div>
+      </form>
+      <form class="form-group" [formGroup]="opcoesForm" (ngSubmit)="onSubmitOpcoes()">
+
+        <h6 class="mt-3">Opções do Catálogo </h6>
+        <hr>
+        <div class="row">
+          <div class="form-group col-md-2">
+              <label>Status</label>
+              <input type="text" class="form-control" formControlName="status" required>
+            </div>
+            <div class="form-group col-md-3">
+              <label>Código</label>
+              <input type="text" class="form-control" formControlName="codigo" required>
+            </div>
+            <div class="form-group col-md-5">
+              <label>Descrição</label>
+              <input type="text" class="form-control" formControlName="descricao" required>
+            </div>
+            <div class="form-group col-md-2">
+                <label></label>
+                <button type="button" class="btn btn-secondary form-control" style="margin-top:32px">
+                  <i class="fas fa-plus"></i>
+                </button>
+            </div>
+        </div>
+        <button [disabled]="!opcoesForm.valid" class="btn btn-primary btn-rectangle btn-tn">Salvar</button>
+      </form>
+    </div>
+  </div>
+</div>
